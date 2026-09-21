@@ -8,6 +8,33 @@ app.get("/", (c) => {
   return c.html(getPageHtml());
 });
 
+app.get("/install/shadowrocket", (c) => {
+  const moduleUrl = "https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module";
+  const scheme = `shadowrocket://install?module=${encodeURIComponent(moduleUrl)}`;
+  return c.html(`<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WLOC - 打开 Shadowrocket</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;background:#f6f7f9;color:#111}
+    main{max-width:420px;padding:28px;text-align:center}
+    a{display:inline-block;margin-top:16px;padding:14px 22px;border-radius:12px;background:#111;color:#fff;text-decoration:none;font-weight:600}
+    p{line-height:1.6;color:#555}
+  </style>
+</head>
+<body>
+  <main>
+    <h2>WLOC 模块</h2>
+    <p>正在打开 Shadowrocket 并导入模块…</p>
+    <a href="${scheme}">打开 Shadowrocket</a>
+  </main>
+  <script>setTimeout(function(){ location.href = ${JSON.stringify(scheme)}; }, 120);</script>
+</body>
+</html>`);
+});
+
 // 地图链接解析: 供快捷指令调用。
 // GET /api/parse?u=<链接>&format=json&cs=<gcj|none>
 //   返回 {lat, lon, name}; 高德/苹果地图(中国大陆均为 GCJ-02)自动转 WGS84; 境外坐标自动跳过(out_of_china)。cs=none 可强制不转换。

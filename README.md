@@ -27,8 +27,10 @@ https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/w
 **Stash:**
 https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.stoverride
 
-**Shadowrocket(小火箭):**
-https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module
+**Shadowrocket（小火箭）一键安装：**
+https://wloc.guol.ccwu.cc/install/shadowrocket
+
+> 备用模块原始地址：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module
 
 > Egern 可直接使用 Surge 模块
 > Stash 请直接订阅上面的 `.stoverride`，无需用 Script Hub 转换
