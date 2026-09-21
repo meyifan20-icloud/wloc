@@ -63,7 +63,7 @@ app.get("/install/egern", (c) => {
 app.get("/install/quantumultx", (c) => {
   const url = RAW_BASE + "wloc.conf";
   const resource = JSON.stringify({
-    rewrite_remote: [`${url}, tag=WLOC, update-interval=172800, opt-parser=false, enabled=true`]
+    rewrite_remote: [`${url}, tag=WLOC, update-interval=86400, opt-parser=false, enabled=true`]
   });
   return c.html(installPage("Quantumult X", `quantumult-x:///add-resource?remote-resource=${encodeURIComponent(resource)}`));
 });
