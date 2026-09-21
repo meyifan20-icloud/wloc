@@ -223,60 +223,113 @@ cd worker && npm install && npm test
 </details>
 
 <details>
-<summary><b>自部署 Worker（推荐）</b></summary>
+<summary><b>自部署 Cloudflare（推荐 Workers）</b></summary>
 
-公共选点页面有请求上限，建议部署自己的实例：
+WLOC 的 Cloudflare 服务用于在线选点、地图链接解析，以及各客户端的一键安装跳转。**推荐使用 Workers**。
 
-- **Workers**: `https://wloc.guol.ccwu.cc/`
-- **Pages**: `https://wloc.guol.ccwu.cc`
+### 部署前需要准备什么
 
-**一键部署（Workers）：**
+本项目目前**不需要任何额外 Cloudflare 资源或变量**：
+
+- 环境变量：**不需要**
+- Secret：**不需要**
+- KV：**不需要**
+- D1：**不需要**
+- R2：**不需要**
+- Durable Objects：**不需要**
+- Service Binding：**不需要**
+- `nodejs_compat`：**不需要**
+- 自定义域名：可选；部署成功后再绑定即可
+
+---
+
+### 一键部署 Workers
+
+保留原项目的一键部署方式：
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zhangbao20-sina/wloc/tree/main/worker)
 
-> 一键部署仅支持 Workers 模式，点击按钮后按提示授权即可完成部署。
+一键部署会从仓库的 `worker/` 源码构建并创建 Worker。
 
-**手动部署（Workers）：**
+---
+
+### Workers：Dashboard 手动部署 / 覆盖现有 Worker（推荐）
+
+仓库已提供可直接粘贴的单文件版本：
+
+`deploy/worker.js`
+
+如果你已经有一个正在运行的 Worker，例如已经绑定了自己的域名，按下面步骤更新最简单：
+
+1. 打开 Cloudflare Dashboard → **Workers & Pages**。
+2. 进入你现有的 WLOC Worker。
+3. 点击 **Edit code / 编辑代码**。
+4. 打开本仓库的 `deploy/worker.js`，复制**全部内容**。
+5. 在 Cloudflare 编辑器中全选旧代码并完整替换。
+6. 点击 **Deploy / 部署**。
+7. **Variables and Secrets 不需要新增任何内容，Bindings 也不需要添加。**
+8. 如果原 Worker 已经绑定自定义域名（例如 `wloc.guol.ccwu.cc`），保持原绑定即可，不需要重新添加。
+
+部署完成后建议依次测试：
+
+- `https://你的域名/` → 应显示 WLOC 选点页面。
+- `https://你的域名/api/parse?format=json&u=22.544577%2C113.94114` → 应返回包含 `lat`、`lon` 的 JSON。
+- `https://你的域名/install/shadowrocket` → 应出现 WLOC 导入页，并尝试唤起 Shadowrocket。
+
+> 如果 `/install/shadowrocket` 返回 `404 Not Found`，说明 Cloudflare 上仍在运行旧版 Worker，重新用 `deploy/worker.js` 完整覆盖并 Deploy 即可。
+
+---
+
+### Workers：Wrangler 部署
+
+适合从电脑维护源码：
 
 ```bash
-# 1. 克隆仓库
 git clone https://github.com/zhangbao20-sina/wloc.git
 cd wloc/worker
 
-# 2. 安装依赖
 npm install
-
-# 3. 登录 Cloudflare（首次需要）
 npx wrangler login
-
-# 4. 部署
 npm run deploy
 ```
 
-部署成功后会得到你自己的 Worker 地址（如 `https://wloc-spoofer.<你的子域名>.workers.dev`），用这个地址选点即可。
+配置文件为 `worker/wrangler.jsonc`，当前无需填写任何变量或绑定。Wrangler 会构建 `worker/src/` 后部署。
 
-> 免费账户每天 10 万次请求，个人使用完全够用。
+---
 
-<details>
-<summary>高级：Pages 部署</summary>
+### Pages 备用部署
 
-Pages 部署不支持一键按钮，需要手动执行：
+仓库同时提供 Pages Advanced Mode 部署文件：
+
+- `deploy/pages/_worker.js`：完整 Pages Worker
+- `deploy/pages/index.html`：Direct Upload 占位静态文件
+- `deploy/pages/wrangler.jsonc`：Pages Wrangler 配置
+
+#### 方法 A：Cloudflare Dashboard Direct Upload
+
+1. Cloudflare Dashboard → **Workers & Pages** → 创建 **Pages** 项目。
+2. 选择 **Direct Upload / 直接上传**。
+3. 上传 `deploy/pages/` 目录中的文件（也可以先把该目录压缩后上传）。
+4. 部署。
+5. Pages 不需要设置任何环境变量、Secret 或数据库绑定。
+6. 部署成功后使用 `https://<项目名>.pages.dev` 测试。
+7. 如需自定义域名，在 Pages 项目的 **Custom domains** 中绑定。
+
+Pages 使用 `_worker.js` Advanced Mode，因此 `/`、`/api/parse`、`/install/*` 都由同一个文件处理。
+
+#### 方法 B：Wrangler 部署 Pages
 
 ```bash
 git clone https://github.com/zhangbao20-sina/wloc.git
-cd wloc/worker
-npm install
-npm run pages:deploy
+cd wloc/deploy/pages
+
+npx wrangler login
+npx wrangler pages deploy . -c wrangler.jsonc
 ```
 
-> 必须走 `npm run pages:deploy`（它带 `-c wrangler.pages.jsonc`）。直接跑
-> `wrangler pages deploy dist` 会丢掉配置里的 compatibility 设定。
+首次创建 Pages 项目时按 Wrangler 提示输入项目名称即可。
 
-部署时会提示设置 production branch，输入 `main` 即可。部署成功后得到 `https://<项目名>.pages.dev` 地址。
-
-Pages 和 Workers 功能完全一致，按需选择即可。
-
-</details>
+> Workers 和 Pages 功能目标一致，但本项目优先维护 Workers；个人自用建议直接使用 Workers。
 
 </details>
 
