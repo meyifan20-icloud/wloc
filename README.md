@@ -48,7 +48,7 @@ https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/w
 
 直接用快捷指令切换 / 清除定位，无需打开选点页面：
 
-- **wloc 设置地理位置**：https://www.icloud.com/shortcuts/a82717d8fdad4e6280866fcf911173f7
+- **wloc 设置地理位置**：https://www.icloud.com/shortcuts/1f7d9f66a0b94e9ea27dfe8564a419ca
 - **wloc 清理恢复位置**：https://www.icloud.com/shortcuts/704652bc2ad14dbc8f1e14501a3af5e3
 
 **用法**
