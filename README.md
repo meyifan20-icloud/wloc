@@ -10,6 +10,9 @@
 
 ---
 
+**原作者频道：** https://t.me/Jsforbaby  
+**当前维护仓库：** https://github.com/zhangbao20-sina/wloc
+
 ## 订阅地址
 
 **Surge:**
