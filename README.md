@@ -215,7 +215,7 @@ cd worker && npm install && npm test
 公共选点页面有请求上限，建议部署自己的实例：
 
 - **Workers**: `https://wloc-spoofer.wloc.workers.dev/`
-- **Pages**: `https://wloc-pages.pages.dev/`
+- **Pages**: `https://wloc.guol.ccwu.cc`
 
 **一键部署（Workers）：**
 
