@@ -353,11 +353,11 @@ npx wrangler pages deploy . -c wrangler.jsonc
 
 ### 贡献者
 
-- [@YmlyZA](https://github.com/YmlyZA) - 百度地图支持、港澳台边界处理、GCJ 换算优化、回归测试覆盖 ([#83](https://github.com/Yu9191/wloc/pull/83))
-- [@YeTianXingShi](https://github.com/YeTianXingShi) - randomRadius 随机坐标扰动功能原始实现 ([#70](https://github.com/Yu9191/wloc/pull/70))
-- [@SajoLuo](https://github.com/SajoLuo) - Stash 响应格式修复 ([#66](https://github.com/Yu9191/wloc/pull/66))
-- [@SkywardLab](https://github.com/SkywardLab) - 扩展 WLOC 备用域名拦截 ([#90](https://github.com/Yu9191/wloc/pull/90))
-- [@beiming0000](https://github.com/beiming0000) - 逗号小数格式坐标丢失问题报告 ([#96](https://github.com/Yu9191/wloc/issues/96))
+- [@YmlyZA](https://github.com/YmlyZA) - 百度地图支持、港澳台边界处理、GCJ 换算优化、回归测试覆盖 （上游 PR #83）
+- [@YeTianXingShi](https://github.com/YeTianXingShi) - randomRadius 随机坐标扰动功能原始实现 （上游 PR #70）
+- [@SajoLuo](https://github.com/SajoLuo) - Stash 响应格式修复 （上游 PR #66）
+- [@SkywardLab](https://github.com/SkywardLab) - 扩展 WLOC 备用域名拦截 （上游 PR #90）
+- [@beiming0000](https://github.com/beiming0000) - 逗号小数格式坐标丢失问题报告 （上游 Issue #96）
 
 ---
 
