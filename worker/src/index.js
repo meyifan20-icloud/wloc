@@ -8,15 +8,15 @@ app.get("/", (c) => {
   return c.html(getPageHtml());
 });
 
-app.get("/install/shadowrocket", (c) => {
-  const moduleUrl = "https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module";
-  const scheme = `shadowrocket://install?module=${encodeURIComponent(moduleUrl)}`;
-  return c.html(`<!doctype html>
+const RAW_BASE = "https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/";
+
+function installPage(appName, scheme) {
+  return `<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>WLOC - 打开 Shadowrocket</title>
+  <title>WLOC - 打开 ${appName}</title>
   <style>
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;background:#f6f7f9;color:#111}
     main{max-width:420px;padding:28px;text-align:center}
@@ -27,12 +27,45 @@ app.get("/install/shadowrocket", (c) => {
 <body>
   <main>
     <h2>WLOC 模块</h2>
-    <p>正在打开 Shadowrocket 并导入模块…</p>
-    <a href="${scheme}">打开 Shadowrocket</a>
+    <p>正在打开 ${appName} 并导入 WLOC…</p>
+    <a href="${scheme}">打开 ${appName}</a>
   </main>
   <script>setTimeout(function(){ location.href = ${JSON.stringify(scheme)}; }, 120);</script>
 </body>
-</html>`);
+</html>`;
+}
+
+app.get("/install/shadowrocket", (c) => {
+  const url = RAW_BASE + "wloc.module";
+  return c.html(installPage("Shadowrocket", `shadowrocket://install?module=${encodeURIComponent(url)}`));
+});
+
+app.get("/install/surge", (c) => {
+  const url = RAW_BASE + "wloc.sgmodule";
+  return c.html(installPage("Surge", `surge:///install-module?url=${encodeURIComponent(url)}`));
+});
+
+app.get("/install/loon", (c) => {
+  const url = RAW_BASE + "wloc.lpx";
+  return c.html(installPage("Loon", `loon://import?plugin=${encodeURIComponent(url)}`));
+});
+
+app.get("/install/stash", (c) => {
+  const url = RAW_BASE + "wloc.stoverride";
+  return c.html(installPage("Stash", `stash://install-override?url=${encodeURIComponent(url)}`));
+});
+
+app.get("/install/egern", (c) => {
+  const url = RAW_BASE + "wloc.sgmodule";
+  return c.html(installPage("Egern", `egern:/modules/new?name=WLOC&url=${encodeURIComponent(url)}`));
+});
+
+app.get("/install/quantumultx", (c) => {
+  const url = RAW_BASE + "wloc.conf";
+  const resource = JSON.stringify({
+    rewrite_remote: [`${url}, tag=WLOC, update-interval=172800, opt-parser=false, enabled=true`]
+  });
+  return c.html(installPage("Quantumult X", `quantumult-x:///add-resource?remote-resource=${encodeURIComponent(resource)}`));
 });
 
 // 地图链接解析: 供快捷指令调用。

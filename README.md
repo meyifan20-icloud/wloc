@@ -15,25 +15,31 @@
 
 ## 订阅地址
 
-**Surge:**
-https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.sgmodule
+**Surge 一键安装：**
+https://wloc.guol.ccwu.cc/install/surge  
+> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.sgmodule
 
-**Quantumult X:**
-https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.conf
+**Quantumult X 一键安装：**
+https://wloc.guol.ccwu.cc/install/quantumultx  
+> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.conf
 
-**Loon:**
-https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.lpx
+**Loon 一键安装：**
+https://wloc.guol.ccwu.cc/install/loon  
+> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.lpx
 
-**Stash:**
-https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.stoverride
+**Stash 一键安装：**
+https://wloc.guol.ccwu.cc/install/stash  
+> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.stoverride
 
 **Shadowrocket（小火箭）一键安装：**
-https://wloc.guol.ccwu.cc/install/shadowrocket
+https://wloc.guol.ccwu.cc/install/shadowrocket  
+> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module
 
-> 备用模块原始地址：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module
+**Egern 一键安装：**
+https://wloc.guol.ccwu.cc/install/egern  
+> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.sgmodule
 
-> Egern 可直接使用 Surge 模块
-> Stash 请直接订阅上面的 `.stoverride`，无需用 Script Hub 转换
+> Egern 使用 Surge 格式模块；Stash 使用原生 `.stoverride`。
 
 ### 默认扩展域名支持
 
