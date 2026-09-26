@@ -54,33 +54,33 @@
 ---
 
 **原作者频道：** https://t.me/Jsforbaby  
-**当前维护仓库：** https://github.com/zhangbao20-sina/wloc
+**当前维护仓库：** https://github.com/meyifan20-icloud/wloc
 
 ## 订阅地址
 
 **Surge 一键安装：**
 https://wloc.guol.ccwu.cc/install/surge  
-> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.sgmodule
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.sgmodule
 
 **Quantumult X 一键安装：**
 https://wloc.guol.ccwu.cc/install/quantumultx  
-> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.conf
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.conf
 
 **Loon 一键安装：**
 https://wloc.guol.ccwu.cc/install/loon  
-> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.lpx
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.lpx
 
 **Stash 一键安装：**
 https://wloc.guol.ccwu.cc/install/stash  
-> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.stoverride
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.stoverride
 
 **Shadowrocket（小火箭）一键安装：**
 https://wloc.guol.ccwu.cc/install/shadowrocket  
-> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.module
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.module
 
 **Egern 一键安装：**
 https://wloc.guol.ccwu.cc/install/egern  
-> RAW：https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/wloc.sgmodule
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.sgmodule
 
 > Egern 使用 Surge 格式模块；Stash 使用原生 `.stoverride`。
 
@@ -290,7 +290,7 @@ WLOC 的 Cloudflare 服务用于在线选点、地图链接解析，以及各客
 
 保留原项目的一键部署方式：
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zhangbao20-sina/wloc/tree/main/worker)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/meyifan20-icloud/wloc/tree/main/worker)
 
 一键部署会从仓库的 `worker/` 源码构建并创建 Worker。
 
@@ -328,7 +328,7 @@ WLOC 的 Cloudflare 服务用于在线选点、地图链接解析，以及各客
 适合从电脑维护源码：
 
 ```bash
-git clone https://github.com/zhangbao20-sina/wloc.git
+git clone https://github.com/meyifan20-icloud/wloc.git
 cd wloc/worker
 
 npm install
@@ -363,7 +363,7 @@ Pages 使用 `_worker.js` Advanced Mode，因此 `/`、`/api/parse`、`/install/
 #### 方法 B：Wrangler 部署 Pages
 
 ```bash
-git clone https://github.com/zhangbao20-sina/wloc.git
+git clone https://github.com/meyifan20-icloud/wloc.git
 cd wloc/deploy/pages
 
 npx wrangler login
