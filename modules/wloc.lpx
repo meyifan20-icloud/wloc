@@ -1,6 +1,6 @@
 #!name=Apple WLOC 定位修改
 #!desc=修改 Apple 网络定位返回坐标 | 快捷指令(推荐): 设置地理位置 https://www.icloud.com/shortcuts/1f7d9f66a0b94e9ea27dfe8564a419ca 清理恢复位置 https://www.icloud.com/shortcuts/704652bc2ad14dbc8f1e14501a3af5e3
-#!icon=https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/wloc.jpg
+#!icon=https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/wloc.jpg
 #!author=WLOC Community / meyifan20-icloud
 #!homepage=https://github.com/meyifan20-icloud/wloc
 #!openUrl=https://github.com/meyifan20-icloud/wloc
@@ -12,8 +12,8 @@ randomRadius = input, "0", tag=扰动半径(米，0为关闭)
 logLevel = select, "info", "off", "error", "warn", "debug", "all", tag=日志级别
 
 [Script]
-http-response ^https?:\/\/(?:gs-loc(?:-cn)?\.apple\.com|gsp-ssl\.ls\.apple\.com|bluedot\.is\.autonavi\.com(?:\.gds\.alibabadns\.com)?)\/clls\/wloc script-path=https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/dist/wloc.js, requires-body=true, binary-body-mode=true, timeout=30, tag=Apple WLOC, argument=[{longitude},{latitude},{accuracy},{randomRadius},{logLevel}]
-http-request ^https?:\/\/gs-loc(-cn)?\.apple\.com\/wloc-settings\/save script-path=https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/dist/wloc-settings.js, timeout=10, tag=WLOC Settings
+http-response ^https?:\/\/(?:gs-loc(?:-cn)?\.apple\.com|gsp-ssl\.ls\.apple\.com|bluedot\.is\.autonavi\.com(?:\.gds\.alibabadns\.com)?)\/clls\/wloc script-path=https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/dist/wloc.js, requires-body=true, binary-body-mode=true, timeout=30, tag=Apple WLOC, argument=[{longitude},{latitude},{accuracy},{randomRadius},{logLevel}]
+http-request ^https?:\/\/gs-loc(-cn)?\.apple\.com\/wloc-settings\/save script-path=https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/dist/wloc-settings.js, timeout=10, tag=WLOC Settings
 
 [MITM]
 hostname = gs-loc.apple.com, gs-loc-cn.apple.com, gsp-ssl.ls.apple.com, bluedot.is.autonavi.com, bluedot.is.autonavi.com.gds.alibabadns.com
