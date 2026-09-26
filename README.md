@@ -58,33 +58,26 @@
 
 ## 订阅地址
 
-**Surge 一键安装：**
-https://wloc.guol.ccwu.cc/install/surge  
-> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.sgmodule
+当前仓库的远程订阅源均直接使用本仓库 GitHub RAW，避免依赖失效的旧 Worker 域名。
 
-**Quantumult X 一键安装：**
-https://wloc.guol.ccwu.cc/install/quantumultx  
-> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.conf
+**Surge / Egern：**  
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.sgmodule
 
-**Loon 一键安装：**
-https://wloc.guol.ccwu.cc/install/loon  
-> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.lpx
+**Quantumult X：**  
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.conf
 
-**Stash 一键安装：**
-https://wloc.guol.ccwu.cc/install/stash  
-> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.stoverride
+**Loon：**  
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.lpx
 
-**Shadowrocket（小火箭）一键安装：**
-https://wloc.guol.ccwu.cc/install/shadowrocket  
-> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.module
+**Stash：**  
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.stoverride
 
-**Egern 一键安装：**
-https://wloc.guol.ccwu.cc/install/egern  
-> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.sgmodule
+**Shadowrocket（小火箭）：**  
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.module
 
 > Egern 使用 Surge 格式模块；Stash 使用原生 `.stoverride`。
-
-> **更新说明：** 上面所有“一键安装”都会把对应的 GitHub RAW 地址作为远程资源源地址保存到客户端，不是一次性复制代码。以后本仓库 `main` 分支更新后，在客户端执行“更新/刷新远程资源”即可同步；支持自动更新的客户端可按各自设置自动刷新。Quantumult X 当前设置为每 24 小时同步一次。
+>
+> **更新说明：** 以上地址都是远程资源源地址。以后本仓库 `main` 分支更新后，在客户端执行“更新/刷新远程资源”即可同步；支持自动更新的客户端可按各自设置自动刷新。新的 Cloudflare Worker 部署完成后，再补充对应的 `/install/*` 一键安装入口。
 
 ### 默认扩展域名支持
 
@@ -119,7 +112,7 @@ https://wloc.guol.ccwu.cc/install/egern
 
 ### 关于地图链接解析（worker）
 
-为了让苹果地图和高德走同一条流程，链接统一发给 `wloc.guol.ccwu.cc/api/parse` 解析：
+为了让苹果地图和高德走同一条流程，项目提供 Worker 路由 `/api/parse` 统一解析；自部署后使用你自己的 Worker 域名调用该接口：
 
 - **高德**：分享出来是短链，真实坐标只藏在 302 跳转的 `Location` 头里，且是 GCJ-02 偏移坐标。快捷指令既读不到跳转头、也难做坐标换算，所以由 worker 跟跳转 → 抠坐标 → GCJ-02→WGS84 → 返回经纬度。
 - **苹果地图**：链接里直接带 `coordinate=纬度,经度`，但在**中国大陆同样是 GCJ-02 偏移坐标**，所以和高德一样由 worker 做 GCJ-02→WGS84 换算后返回；境外坐标会自动跳过换算（`out_of_china` 判断）原样返回。除了统一坐标系，走同一接口也方便统一处理短链、文本夹链接、名称解码等。
@@ -131,7 +124,7 @@ https://wloc.guol.ccwu.cc/install/egern
 - 路由：[`worker/src/index.js`](worker/src/index.js)
 - 链接解析与坐标换算：[`worker/src/parse.js`](worker/src/parse.js)
 - 选点页面：[`worker/src/page.js`](worker/src/page.js)、[`worker/src/gcj-browser.js`](worker/src/gcj-browser.js)
-- 部署后把快捷指令里的 `wloc.guol.ccwu.cc` 换成你自己的 worker 域名即可。
+- 部署后把快捷指令里的解析服务地址换成你自己的 Worker 域名即可。
 
 解析逻辑带一套不联网的回归测试，改动后跑一下：
 
@@ -311,7 +304,7 @@ WLOC 的 Cloudflare 服务用于在线选点、地图链接解析，以及各客
 5. 在 Cloudflare 编辑器中全选旧代码并完整替换。
 6. 点击 **Deploy / 部署**。
 7. **Variables and Secrets 不需要新增任何内容，Bindings 也不需要添加。**
-8. 如果原 Worker 已经绑定自定义域名（例如 `wloc.guol.ccwu.cc`），保持原绑定即可，不需要重新添加。
+8. 如果原 Worker 已经绑定你自己的自定义域名，保持原绑定即可，不需要重新添加。
 
 部署完成后建议依次测试：
 
