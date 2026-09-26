@@ -61,19 +61,19 @@
 当前仓库的远程订阅源均直接使用本仓库 GitHub RAW，避免依赖失效的旧 Worker 域名。
 
 **Surge / Egern：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.sgmodule
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.sgmodule
 
 **Quantumult X：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.conf
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.conf
 
 **Loon：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.lpx
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.lpx
 
 **Stash：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.stoverride
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.stoverride
 
 **Shadowrocket（小火箭）：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/wloc.module
+https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.module
 
 > Egern 使用 Surge 格式模块；Stash 使用原生 `.stoverride`。
 >
