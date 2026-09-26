@@ -8,7 +8,7 @@ app.get("/", (c) => {
   return c.html(getPageHtml());
 });
 
-const RAW_BASE = "https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/";
+const RAW_BASE = "https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/";
 
 function installPage(appName, scheme) {
   return `<!doctype html>
