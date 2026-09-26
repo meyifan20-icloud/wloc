@@ -112,14 +112,14 @@ https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.module
 
 ### 关于地图链接解析（worker）
 
-为了让苹果地图和高德走同一条流程，项目提供 Worker 路由 `/api/parse` 统一解析；自部署后使用你自己的 Worker 域名调用该接口：
+为了让苹果地图和高德走同一条流程，当前公共解析入口为 `https://d.a.us.ci/api/parse`：
 
 - **高德**：分享出来是短链，真实坐标只藏在 302 跳转的 `Location` 头里，且是 GCJ-02 偏移坐标。快捷指令既读不到跳转头、也难做坐标换算，所以由 worker 跟跳转 → 抠坐标 → GCJ-02→WGS84 → 返回经纬度。
 - **苹果地图**：链接里直接带 `coordinate=纬度,经度`，但在**中国大陆同样是 GCJ-02 偏移坐标**，所以和高德一样由 worker 做 GCJ-02→WGS84 换算后返回；境外坐标会自动跳过换算（`out_of_china` 判断）原样返回。除了统一坐标系，走同一接口也方便统一处理短链、文本夹链接、名称解码等。
 
 **隐私：** `/api/parse` 是纯转发解析——收到链接 → 跟跳转 → 解析坐标 → 返回 JSON，全程不写任何存储、不记日志、不缓存，处理完即丢（`wrangler.jsonc` 里已显式关闭 observability）。跟跳转时只接受 http/https，单次请求 8 秒超时、只读响应正文前 512 KB。
 
-**不放心可自行部署：** worker 源码完全开源，可自己部署一份替换上面的地址：
+**不放心可自行部署：** Worker 源码完全开源，可自己部署一份替换当前公共地址：
 
 - 路由：[`worker/src/index.js`](worker/src/index.js)
 - 链接解析与坐标换算：[`worker/src/parse.js`](worker/src/parse.js)
@@ -155,7 +155,7 @@ cd worker && npm install && npm test
 <summary><b>使用方法</b></summary>
 
 1. 订阅模块并启用 MITM
-2. 打开在线选点页面（公共 Worker，建议添加到主屏幕）
+2. 打开在线选点页面：https://d.a.us.ci/（建议添加到主屏幕）
 3. 地图选位置 / 搜索地名 / 粘贴地图链接
 4. 点击「储存到设备」
 5. 下次 Apple 定位触发时自动生效
