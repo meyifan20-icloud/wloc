@@ -1,5 +1,5 @@
 // WLOC standalone deployment file
-// Source: https://github.com/zhangbao20-sina/wloc
+// Source: https://github.com/meyifan20-icloud/wloc
 // No environment variables, secrets, KV, D1, R2, Durable Objects or service bindings are required.
 // Generated from worker/src/* so Cloudflare Dashboard can deploy it as a single Module Worker.
 
@@ -960,7 +960,7 @@ function gcj02ToWgs84(lat, lon) {
 
 
 // ---- Standalone Cloudflare deployment entry ----
-const RAW_BASE = "https://raw.githubusercontent.com/zhangbao20-sina/wloc/refs/heads/main/modules/";
+const RAW_BASE = "https://raw.githubusercontent.com/meyifan20-icloud/wloc/refs/heads/main/modules/";
 
 function installPage(appName, scheme) {
   return `<!doctype html>
