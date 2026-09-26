@@ -58,26 +58,33 @@
 
 ## 订阅地址
 
-当前仓库的远程订阅源均直接使用本仓库 GitHub RAW，避免依赖失效的旧 Worker 域名。
+**Surge 一键安装：**  
+https://d.a.us.ci/install/surge  
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.sgmodule
 
-**Surge / Egern：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.sgmodule
+**Quantumult X 一键安装：**  
+https://d.a.us.ci/install/quantumultx  
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.conf
 
-**Quantumult X：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.conf
+**Loon 一键安装：**  
+https://d.a.us.ci/install/loon  
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.lpx
 
-**Loon：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.lpx
+**Stash 一键安装：**  
+https://d.a.us.ci/install/stash  
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.stoverride
 
-**Stash：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.stoverride
+**Shadowrocket（小火箭）一键安装：**  
+https://d.a.us.ci/install/shadowrocket  
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.module
 
-**Shadowrocket（小火箭）：**  
-https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.module
+**Egern 一键安装：**  
+https://d.a.us.ci/install/egern  
+> RAW：https://raw.githubusercontent.com/meyifan20-icloud/wloc/main/modules/wloc.sgmodule
 
 > Egern 使用 Surge 格式模块；Stash 使用原生 `.stoverride`。
 >
-> **更新说明：** 以上地址都是远程资源源地址。以后本仓库 `main` 分支更新后，在客户端执行“更新/刷新远程资源”即可同步；支持自动更新的客户端可按各自设置自动刷新。新的 Cloudflare Worker 部署完成后，再补充对应的 `/install/*` 一键安装入口。
+> **更新说明：** 上面的一键安装入口由当前 WLOC Worker 提供，最终远程资源仍指向本仓库 GitHub RAW。以后本仓库 `main` 分支更新后，在客户端执行“更新/刷新远程资源”即可同步。
 
 ### 默认扩展域名支持
 
